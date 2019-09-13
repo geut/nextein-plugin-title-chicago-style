@@ -21,14 +21,12 @@ module.exports = withNextein({
   nextein: function(config) {
    
     config.plugins.push({
-      {
-        name: '@geut/nextein-plugin-title-chicago-style',
-        options: {
-          special: [
-            /* List your special words here */
-            'GEUT'
-          ]
-        }
+      name: '@geut/nextein-plugin-title-chicago-style',
+      options: {
+        special: [
+          /* List your special words here */
+          'GEUT'
+        ]
       }
     })
 
