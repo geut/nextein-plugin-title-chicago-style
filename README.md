@@ -11,8 +11,9 @@ const { withNextein } = require('nextein/config')
 
 
 module.exports = withNextein({
-  nextein: {
-    plugins: [
+  nextein: function(config) {
+   
+    config.plugins.push({
       {
         name: '@geut/nextein-plugin-title-chicago-style',
         options: {
@@ -22,8 +23,10 @@ module.exports = withNextein({
           ]
         }
       }
-    ]
-  },
+    })
+
+   return config
+ },
   // ...
 }))
 
