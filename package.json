@@ -1,0 +1,13 @@
+{
+  "name": "nextein-plugin-title-chicago-style",
+  "version": "1.0.0",
+  "description": "A Nextein Plugin to Apply Chicago Style to Titles.",
+  "main": "index.js",
+  "keywords": ["nextein", "plugin", "title"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "title": "^3.4.1",
+    "unist-util-visit": "^2.0.0"
+  }
+}
