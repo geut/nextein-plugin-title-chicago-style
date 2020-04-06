@@ -42,6 +42,6 @@ module.exports = withNextein({
 The `options` object can define the following properties:
 
 - special: `{Array}. Default: []` A set of words to be capitalized in a special way.
-- excludeFrontMatter: `{Boolean}. Default: false`. Set to true if you don't want to process `title` in front-matter.
+- frontMatter: `{Array}. Default: ['title']`. Fields from front matter that will be processed.
 - maxDepht: `{Number}. Default: 6`. The maximum depht for heading elements. `6` means `h6`.
 

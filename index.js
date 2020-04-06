@@ -5,20 +5,25 @@ const headingsByLevel = level => {
   return Array.from(Array(level), (h, idx) => `h${idx+1}`)
 }
 
-module.exports.transform = ({ special, maxDepth = 6, excludeFrontMatter = false } = {}, posts) => {
-  const headings = headingsByLevel(maxDepth) 
-  const titleOpts = { special }
+module.exports.transform = ({ special, maxDepth = 6, frontMatter = ['title'] } = {}, posts) => {
+  const excludeFrontMatter = !frontMatter || !frontMatter.length
+  const headings = headingsByLevel(maxDepth)
+  const opts = { special }
   
   return posts.map(post => {
 
     if (!excludeFrontMatter) {
-      post.data.title = title(post.data.title, titleOpts);
+      for (const field in frontMatter ) {
+        if (post.data[field]) {
+          post.data[field] = title(post.data[field], opts)
+        }
+      }
     }
 
     visit(post.content, 'element', (node) => {
       if(headings.includes(node.tagName)) {
         visit(node, 'text', (textNode, textIndex, textParent) => {
-          textParent.children.splice(textIndex, 1, {...textNode, value: title(textNode.value, titleOpts)})
+          textParent.children.splice(textIndex, 1, {...textNode, value: title(textNode.value, opts)})
           return textIndex + 1
         })
       }
