@@ -13,7 +13,7 @@ module.exports.transform = ({ special, maxDepth = 6, frontMatter = ['title'] } =
   return posts.map(post => {
 
     if (!excludeFrontMatter) {
-      for (const field in frontMatter ) {
+      for (const field of frontMatter ) {
         if (post.data[field]) {
           post.data[field] = title(post.data[field], opts)
         }
